@@ -226,7 +226,7 @@ class _OrderCreateScreenState extends State<OrderCreateScreen> {
                           const SizedBox(height: 8.0),
                           ...products
                               .map((e) => SizedBox(
-                                    height: 70,
+                                    height: 90,
                                     child: ItemCard(
                                       orderProduct: e,
                                       onDelete: onProductDelete,
@@ -499,6 +499,12 @@ class _ItemCardState extends State<ItemCard> {
                               fontWeight: FontWeight.w600,
                             ),
                       ),
+                    ),
+                    Text(
+                      widget.orderProduct.product.color,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Colors.grey[600],
+                          ),
                     ),
                     Text(
                       '${widget.orderProduct.quantity.toString()} pcs',

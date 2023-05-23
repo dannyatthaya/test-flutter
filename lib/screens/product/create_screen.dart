@@ -22,10 +22,12 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
   final displayNameFieldKey = GlobalKey<FormBuilderFieldState>();
   final categoryFieldKey = GlobalKey<FormBuilderFieldState>();
   final priceFieldKey = GlobalKey<FormBuilderFieldState>();
+  final colorFieldKey = GlobalKey<FormBuilderFieldState>();
   final nameFocusNode = FocusNode();
   final displayNameFocusNode = FocusNode();
   final categoryFocusNode = FocusNode();
   final priceFocusNode = FocusNode();
+  final colorFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -51,6 +53,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
         displayName: displayNameFieldKey.currentState!.value,
         category: categoryFieldKey.currentState!.value,
         price: double.parse(priceFieldKey.currentState!.value),
+        color: colorFieldKey.currentState!.value,
       ));
 
       showSuccessSnackbar('Request is successful');
@@ -74,6 +77,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     displayNameFocusNode.unfocus();
     categoryFocusNode.unfocus();
     priceFocusNode.unfocus();
+    colorFocusNode.unfocus();
   }
 
   InputDecoration defaultDecoration({required String label}) {
@@ -147,6 +151,18 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
                               FormBuilderValidators.numeric(),
+                            ]),
+                          ),
+                          const SizedBox(height: 32.0),
+                          FormBuilderTextField(
+                            key: colorFieldKey,
+                            name: 'color',
+                            focusNode: colorFocusNode,
+                            decoration: defaultDecoration(
+                              label: 'Color',
+                            ),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(),
                             ]),
                           ),
                         ],

@@ -61,11 +61,22 @@ class _OrderReadScreenState extends State<OrderReadScreen> {
                       title: const Text('Customer Name'),
                       subtitle: Text(data?.customer?.displayName ?? ''),
                     ),
+                    ListTile(
+                      title: const Text('Customer Address'),
+                      subtitle: Text(data?.customer?.address ?? ''),
+                    ),
                     ...?data?.products
                         ?.map(
                           (e) => ListTile(
                             title: Text(e.displayName),
-                            subtitle: Text(currencyFormat.format(e.price)),
+                            subtitle: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(e.color),
+                                Text(currencyFormat.format(e.price)),
+                              ],
+                            ),
                             trailing: Text('${e.quantity} pcs'),
                           ),
                         )

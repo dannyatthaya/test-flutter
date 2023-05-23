@@ -71,6 +71,7 @@ class _OrderEditScreenState extends State<OrderEditScreen> {
                 displayName: e.displayName,
                 category: e.category,
                 price: e.price,
+                color: e.color,
               ),
               quantity: e.quantity ?? 0,
             ),
@@ -266,7 +267,7 @@ class _OrderEditScreenState extends State<OrderEditScreen> {
                           const SizedBox(height: 8.0),
                           ...products
                               .map((e) => SizedBox(
-                                    height: 70,
+                                    height: 90,
                                     child: ItemCard(
                                       orderProduct: e,
                                       onDelete: onProductDelete,
@@ -544,6 +545,12 @@ class _ItemCardState extends State<ItemCard> {
                               fontWeight: FontWeight.w600,
                             ),
                       ),
+                    ),
+                    Text(
+                      widget.orderProduct.product.color,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Colors.grey[600],
+                          ),
                     ),
                     Text(
                       '${widget.orderProduct.quantity.toString()} pcs',

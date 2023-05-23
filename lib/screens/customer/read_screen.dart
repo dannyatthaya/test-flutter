@@ -80,6 +80,10 @@ class _CustomerReadScreenState extends State<CustomerReadScreen> {
                       subtitle: Text(formatGender(data?.gender)),
                     ),
                     ListTile(
+                      title: const Text('Address'),
+                      subtitle: Text(data?.address ?? ''),
+                    ),
+                    ListTile(
                       title: const Text('Created At'),
                       subtitle: Text(
                           dateFormat.format(data?.createdAt ?? DateTime.now())),

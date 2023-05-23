@@ -80,6 +80,10 @@ class _ProductReadScreenState extends State<ProductReadScreen> {
                       subtitle: Text(currencyFormat.format(data?.price ?? 0)),
                     ),
                     ListTile(
+                      title: const Text('Color'),
+                      subtitle: Text(data?.color ?? ''),
+                    ),
+                    ListTile(
                       title: const Text('Created At'),
                       subtitle: Text(
                           dateFormat.format(data?.createdAt ?? DateTime.now())),

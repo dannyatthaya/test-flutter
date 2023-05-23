@@ -22,10 +22,12 @@ class _CustomerCreateScreenState extends State<CustomerCreateScreen> {
   final displayNameFieldKey = GlobalKey<FormBuilderFieldState>();
   final locationFieldKey = GlobalKey<FormBuilderFieldState>();
   final genderFieldKey = GlobalKey<FormBuilderFieldState>();
+  final addressFieldKey = GlobalKey<FormBuilderFieldState>();
   final nameFocusNode = FocusNode();
   final displayNameFocusNode = FocusNode();
   final locationFocusNode = FocusNode();
   final genderFocusNode = FocusNode();
+  final addressFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -51,6 +53,7 @@ class _CustomerCreateScreenState extends State<CustomerCreateScreen> {
         displayName: displayNameFieldKey.currentState!.value,
         location: locationFieldKey.currentState!.value,
         gender: genderFieldKey.currentState!.value,
+        address: addressFieldKey.currentState!.value,
       ));
 
       showSuccessSnackbar('Request is successful');
@@ -74,6 +77,7 @@ class _CustomerCreateScreenState extends State<CustomerCreateScreen> {
     displayNameFocusNode.unfocus();
     locationFocusNode.unfocus();
     genderFocusNode.unfocus();
+    addressFocusNode.unfocus();
   }
 
   InputDecoration defaultDecoration({required String label}) {
@@ -164,6 +168,18 @@ class _CustomerCreateScreenState extends State<CustomerCreateScreen> {
                                       child: Text(formatGender(gender)),
                                     ))
                                 .toList(),
+                          ),
+                          const SizedBox(height: 32.0),
+                          FormBuilderTextField(
+                            key: addressFieldKey,
+                            name: 'address',
+                            focusNode: addressFocusNode,
+                            decoration: defaultDecoration(
+                              label: 'Address',
+                            ),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(),
+                            ]),
                           ),
                         ],
                       ),

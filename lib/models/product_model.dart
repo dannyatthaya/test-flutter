@@ -6,6 +6,7 @@ class ProductModel {
   final String displayName;
   final String category;
   final double price;
+  final String color;
   final int? quantity;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -16,6 +17,7 @@ class ProductModel {
     required this.displayName,
     required this.category,
     required this.price,
+    required this.color,
     this.quantity,
     required this.createdAt,
     required this.updatedAt,
@@ -27,6 +29,7 @@ class ProductModel {
     required this.displayName,
     required this.category,
     required this.price,
+    required this.color,
     int? quantity,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -44,6 +47,7 @@ class ProductModel {
       price: json.containsKey('price')
           ? double.parse(json['price'].toString())
           : 0.0,
+      color: json['color'],
       quantity: json.containsKey('quantity')
           ? int.parse(json['quantity'].toString())
           : 0,
@@ -59,6 +63,7 @@ class ProductModel {
       'displayName': displayName,
       'category': category,
       'price': price,
+      'color': color,
       'quantity': quantity,
       'createdAt': createdAt.toString(),
       'updatedAt': updatedAt.toString(),
@@ -72,6 +77,7 @@ class ProductModel {
       'display_name': displayName,
       'category': category,
       'price': price,
+      'color': color,
       'quantity': quantity,
     };
   }

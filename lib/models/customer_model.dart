@@ -6,6 +6,7 @@ class CustomerModel {
   final String displayName;
   final String location;
   final String gender;
+  final String? address;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -15,6 +16,7 @@ class CustomerModel {
     required this.displayName,
     required this.location,
     required this.gender,
+    this.address,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -25,6 +27,7 @@ class CustomerModel {
     required this.displayName,
     required this.location,
     required this.gender,
+    this.address,
     DateTime? createdAt,
     DateTime? updatedAt,
   })  : id = id ?? 0,
@@ -38,6 +41,7 @@ class CustomerModel {
       displayName: json['displayName'],
       location: json['location'],
       gender: json['gender'],
+      address: json['address'],
       createdAt: dateFormat.parse(json['createdAt']),
       updatedAt: dateFormat.parse(json['updatedAt']),
     );
@@ -50,6 +54,7 @@ class CustomerModel {
       'displayName': displayName,
       'location': location,
       'gender': gender,
+      'address': address,
       'createdAt': createdAt.toString(),
       'updatedAt': updatedAt.toString(),
     };
@@ -62,6 +67,7 @@ class CustomerModel {
       'display_name': displayName,
       'location': location,
       'gender': gender,
+      'address': address,
     };
   }
 }

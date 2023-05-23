@@ -25,10 +25,12 @@ class _CustomerEditScreenState extends State<CustomerEditScreen> {
   final displayNameFieldKey = GlobalKey<FormBuilderFieldState>();
   final locationFieldKey = GlobalKey<FormBuilderFieldState>();
   final genderFieldKey = GlobalKey<FormBuilderFieldState>();
+  final addressFieldKey = GlobalKey<FormBuilderFieldState>();
   final nameFocusNode = FocusNode();
   final displayNameFocusNode = FocusNode();
   final locationFocusNode = FocusNode();
   final genderFocusNode = FocusNode();
+  final addressFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -55,6 +57,7 @@ class _CustomerEditScreenState extends State<CustomerEditScreen> {
       'displayName': data?.displayName,
       'location': data?.location,
       'gender': data?.gender,
+      'address': data?.address,
     });
 
     setState(() {});
@@ -72,6 +75,7 @@ class _CustomerEditScreenState extends State<CustomerEditScreen> {
         displayName: displayNameFieldKey.currentState!.value,
         location: locationFieldKey.currentState!.value,
         gender: genderFieldKey.currentState!.value,
+        address: addressFieldKey.currentState!.value,
       ));
 
       showSuccessSnackbar('Request is successful');
@@ -95,6 +99,7 @@ class _CustomerEditScreenState extends State<CustomerEditScreen> {
     displayNameFocusNode.unfocus();
     locationFocusNode.unfocus();
     genderFocusNode.unfocus();
+    addressFocusNode.unfocus();
   }
 
   InputDecoration defaultDecoration({required String label}) {
@@ -185,6 +190,18 @@ class _CustomerEditScreenState extends State<CustomerEditScreen> {
                                       child: Text(formatGender(gender)),
                                     ))
                                 .toList(),
+                          ),
+                          const SizedBox(height: 32.0),
+                          FormBuilderTextField(
+                            key: addressFieldKey,
+                            name: 'address',
+                            focusNode: addressFocusNode,
+                            decoration: defaultDecoration(
+                              label: 'Address',
+                            ),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(),
+                            ]),
                           ),
                         ],
                       ),
